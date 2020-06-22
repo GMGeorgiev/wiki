@@ -1,0 +1,208 @@
+## TEXT HOVER ANIMATION ##
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #0087ca;
+}
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+=============================================================================================================================
+
+## BUTTON BORDER ANIMATION ##
+
+<div class="button-border"><button class="button">Submit</button></div>
+
+.button {
+  background-color: #c47135;
+  border: none;
+  color: #ffffff;
+  outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+}
+.button:before,
+.button:after {
+  border: 0 solid transparent;
+  transition: all 0.25s;
+  content: '';
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+.button:before {
+  border-top: 2px solid #c47135;
+  left: 0px;
+  top: -5px;
+}
+.button:after {
+  border-bottom: 2px solid #c47135;
+  bottom: -5px;
+  right: 0px;
+}
+.button:hover {
+  background-color: #c47135;
+}
+.button:hover:before,
+.button:hover:after {
+  height: 100%;
+  width: 100%;
+}
+
+=============================================================================================================================
+
+## BOUNCING LOADER ##
+
+<div class="bouncing-loader">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+@keyframes bouncing-loader {
+  to {
+    opacity: 0.1;
+    transform: translate3d(0, -1rem, 0);
+  }
+}
+.bouncing-loader {
+  display: flex;
+  justify-content: center;
+}
+.bouncing-loader > div {
+  width: 1rem;
+  height: 1rem;
+  margin: 3rem 0.2rem;
+  background: #8385aa;
+  border-radius: 50%;
+  animation: bouncing-loader 0.6s infinite alternate;
+}
+.bouncing-loader > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.bouncing-loader > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+=============================================================================================================================
+## TOGGLE SWITCH ##
+
+<input type="checkbox" id="toggle" class="offscreen" /> <label for="toggle" class="switch"></label>
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  transition: all 0.3s;
+}
+
+.switch::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 18px;
+  background-color: white;
+  top: 1px;
+  left: 1px;
+  transition: all 0.3s;
+}
+
+input[type='checkbox']:checked + .switch::after {
+  transform: translateX(20px);
+}
+
+input[type='checkbox']:checked + .switch {
+  background-color: #7983ff;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+=============================================================================================================================
+## EASING VARIABLES ##
+
+<div class="easing-variables">Hover</div>
+
+:root {
+  /* Place variables in here to use globally */
+}
+
+.easing-variables {
+  --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  --ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  --ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-out-circ: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+  --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+  --ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  padding: 10px;
+  color: white;
+  line-height: 50px;
+  text-align: center;
+  background: #333;
+  transition: transform 1s var(--ease-out-quart);
+}
+
+.easing-variables:hover {
+  transform: rotate(45deg);
+}
+
+=============================================================================================================================
+Add strikethrough when item checked in HTMl
+
+HTML:
+
+<div class="form-group ">
+    <label for="inputName" class="col-md-1 control-label">select</label>  
+    <div class="col-md-5">
+        <div class="checkbox">
+            <input type="checkbox" name="packersOff" value="1"/>
+             <label class="strikethrough">sssssssss</label>
+        </div>
+     </div>
+</div>
+CSS
+
+input[type=checkbox]:checked + label.strikethrough{
+  text-decoration: line-through;
+}
+=============================================================================================================================
+Animated NAVBAR css
+https://www.youtube.com/watch?v=biOMz4puGt8
